@@ -1,0 +1,236 @@
+/* ===== Navbar Premium Styles ===== */
+
+/* Navbar Container */
+.navbar {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 16px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+/* Navbar Brand (Logo + Title) */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.02);
+}
+
+.navbar-brand:hover .navbar-logo {
+    transform: rotate(5deg) scale(1.05);
+}
+
+/* Logo Circle */
+.navbar-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #ec4899 50%, #8b5cf6 100%);
+    background-size: 200% 200%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    box-shadow:
+        0 4px 15px rgba(102, 126, 234, 0.4),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 2px 8px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: logoGradient 5s ease infinite;
+}
+
+@keyframes logoGradient {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Sparkle Icon */
+.navbar-logo-sparkle {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    color: #fbbf24;
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.8));
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(0.8) rotate(15deg);
+    }
+}
+
+/* Title Wrapper */
+.navbar-title-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title */
+.navbar-title {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #ec4899 50%, #8b5cf6 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    animation: titleShimmer 4s linear infinite;
+}
+
+@keyframes titleShimmer {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Tagline */
+.navbar-tagline {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+/* Logout Button */
+.navbar-logout {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-logout::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-logout span,
+.navbar-logout svg {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.navbar-logout:hover,
+.navbar-logout--hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+.navbar-logout:hover::before {
+    opacity: 1;
+}
+
+.navbar-logout:hover span,
+.navbar-logout:hover svg {
+    color: white;
+}
+
+.navbar-logout:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 16px;
+        border-radius: 16px;
+    }
+
+    .navbar-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar-title {
+        font-size: 20px;
+    }
+
+    .navbar-tagline {
+        display: none;
+    }
+
+    .navbar-logout {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .navbar-logout span {
+        display: none;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background: rgba(30, 27, 75, 0.7);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-tagline {
+        color: #94a3b8;
+    }
+
+    .navbar-logout {
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%);
+    }
+}

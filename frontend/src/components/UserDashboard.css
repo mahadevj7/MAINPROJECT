@@ -1,0 +1,468 @@
+/* ===== UserDashboard Premium Styles ===== */
+
+/* Animated Gradient Background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+
+  50% {
+    box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes iconBounce {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Main Dashboard Container */
+.user-dashboard {
+  min-height: 100vh;
+  padding: 40px;
+  background:linear-gradient(135deg, #253eadff 0%, #232894ff 50%, #121492ff 100%);
+  animation: gradientShift 15s ease infinite;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* Content Wrapper */
+.dashboard-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Welcome Header */
+.dashboard-header {
+  margin: 32px 0 48px;
+  animation: slideUp 0.6s ease-out;
+}
+
+.dashboard-welcome {
+  font-size: 42px;
+  font-weight: 800;
+  background:white;
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.dashboard-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* SOS Button Container */
+.sos-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 56px;
+  animation: slideUp 0.8s ease-out;
+}
+
+.sos-button-wrapper {
+  position: relative;
+}
+
+/* SOS Ripple Effect */
+.sos-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid rgba(239, 68, 68, 0.4);
+  animation: ripple 2s ease-out infinite;
+}
+
+.sos-ripple:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.sos-ripple:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+/* SOS Button */
+.sos-button {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+  border: none;
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    0 10px 40px rgba(239, 68, 68, 0.4),
+    0 0 60px rgba(239, 68, 68, 0.2),
+    inset 0 -4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 4px 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+.sos-button::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 50%;
+}
+
+.sos-button:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 15px 50px rgba(239, 68, 68, 0.5),
+    0 0 80px rgba(239, 68, 68, 0.3),
+    inset 0 -4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+.sos-button:active {
+  transform: scale(0.95);
+}
+
+.sos-button-label {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+  letter-spacing: 1px;
+}
+
+/* Dashboard Cards Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+  padding: 36px 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.6s ease-out backwards;
+}
+
+.dashboard-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.dashboard-card:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dashboard-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.dashboard-card:nth-child(4) {
+  animation-delay: 0.25s;
+}
+
+.dashboard-card:nth-child(5) {
+  animation-delay: 0.3s;
+}
+
+.dashboard-card:nth-child(6) {
+  animation-delay: 0.35s;
+}
+
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--card-accent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.dashboard-card:hover::before {
+  transform: scaleX(1);
+}
+
+.dashboard-card:hover .card-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.dashboard-card:hover .card-icon {
+  animation: iconBounce 0.5s ease;
+}
+
+/* Card Icon Wrapper */
+.card-icon-wrapper {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow:
+    0 8px 24px var(--card-shadow),
+    inset 0 -2px 10px rgba(0, 0, 0, 0.1),
+    inset 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+.card-icon-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px dashed var(--card-accent);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover .card-icon-wrapper::after {
+  opacity: 0.5;
+  transform: rotate(45deg);
+}
+
+/* Card Title */
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px;
+  transition: color 0.3s ease;
+}
+
+.dashboard-card:hover .card-title {
+  color: var(--card-accent);
+}
+
+/* Card Description */
+.card-description {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Card Arrow Indicator */
+.card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  color: var(--card-accent);
+}
+
+.dashboard-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Quick Stats Section */
+.quick-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+  animation: slideUp 1s ease-out;
+}
+
+.stat-card {
+  flex: 1;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #667eea;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-dashboard {
+    padding: 20px;
+  }
+
+  .dashboard-welcome {
+    font-size: 28px;
+  }
+
+  .sos-button {
+    width: 150px;
+    height: 150px;
+    font-size: 24px;
+  }
+
+  .sos-ripple {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dashboard-grid {
+    gap: 16px;
+  }
+
+  .dashboard-card {
+    padding: 28px 20px;
+  }
+
+  .card-icon-wrapper {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .user-dashboard {
+    background: linear-gradient(-45deg, #1e1b4b, #312e81, #3730a3, #1e1b4b);
+  }
+
+  .dashboard-card {
+    background: rgba(30, 27, 75, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .card-title {
+    color: #e2e8f0;
+  }
+
+  .card-description {
+    color: #94a3b8;
+  }
+
+  .dashboard-subtitle {
+    color: #94a3b8;
+  }
+}
